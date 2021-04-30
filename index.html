@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<title>Odliczanie dni do wydarzenia </title>
+	
+	<script type="text/javascript" >
+
+	
+	function odliczanie()
+	{
+		var dzisiaj = new Date();//obiekat Date 
+		
+		var dzien = dzisiaj.getDate();
+        var godzina = dzisiaj.getHours();
+        var minuta = dzisiaj.getMinutes();
+        var sekunda = dzisiaj.getSeconds();
+		var miesiac = dzisiaj.getMonth()+1;
+		var rok = dzisiaj.getFullYear();
+		var milisekundy = dzisiaj.getTime();
+		
+		var end = new Date("06/25/2021");//data wydarzenia
+		var endDzien = end.getDate();
+		var endMiesiac = end.getMonth()+1;
+		var endRok = end.getFullYear();
+		var milisekundy2 = end.getTime();
+        var endgodzina = end.getHours();
+		
+		var pozostalo = milisekundy2 - milisekundy; //obliczamy ile milisekund pozostało do wydarzenia
+		var dni = Math.floor(pozostalo/86400000); //obliczamy liczbe dni do wydarzenia
+        var godzinydo = Math.floor(pozostalo/3600000);
+        var minutydo = Math.floor(pozostalo/60000);
+        var sekundydo = Math.floor(pozostalo/1000);
+		
+	
+		
+		document.getElementById("aktualnaData").innerHTML = "Aktualna data: "+dzien+"/"+miesiac+"/"+rok+" | "+godzina+":"+minuta+":"+sekunda; 
+
+		document.getElementById("dataWydarzenia").innerHTML = "Data wydarzenia do którego obliczamy czas: "+endDzien+"/"+endMiesiac+"/"+endRok;
+
+		document.getElementById("dniDoWydarzenia").innerHTML = dni+" dni";
+
+        document.getElementById("godzinyDoWydarzenia").innerHTML = +godzinydo+" godzin"
+
+        document.getElementById("minutyDoWydarzenia").innerHTML = minutydo+" minut"
+
+        document.getElementById("sekundyDoWydarzenia").innerHTML = sekundydo+" sekund"
+
+        setTimeout("odliczanie()",1000);
+		 
+	}
+	
+	</script>
+
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	
+</head>
+<body onload="odliczanie();">
+
+<div id="container">
+<div id="topBar">
+ZEGAR ODLICZAJĄCY CZAS DO WAKACJI</div>
+	
+	<div id="aktualnaData">...</div> 
+
+	<br/>
+	
+	<div id="dataWydarzenia">...</div>
+
+    <br/>
+    <br/>
+    <br/>
+
+	<div id = "bar">Do wakacji zostało:</div>
+	<br/>
+
+	<div id="dniDoWydarzenia">...</div>
+
+    <br/>
+
+    <div id="godzinyDoWydarzenia">...</div>
+
+    <br/>
+
+    <div id="minutyDoWydarzenia">...</div>
+
+    <br/>
+
+    <div id="sekundyDoWydarzenia">...</div>
+	
+	<script type="text/javascript" >
+	odliczanie();
+</script>
+</div>
+</body>
+</html>
